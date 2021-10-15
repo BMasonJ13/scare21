@@ -36,6 +36,14 @@ namespace Scare.Dialog
         public AudioClip DialogAudio { get { return _dialogAudio; } }
 
         [SerializeField]
+        private float _delay;
+
+        /// <summary>
+        /// Delay before starting the AudioClip.
+        /// </summary>
+        public float Delay { get { return _delay; } }
+
+        [SerializeField]
         private Dialog _next;
         /// <summary>
         /// The next logical Dialog Node in the Dialog chain. Null if dialog chain has ended.

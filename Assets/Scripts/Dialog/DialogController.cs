@@ -2,6 +2,7 @@
  * 10/14/2021
  * Dialog Controller
  */
+using TMPro;
 using UnityEngine;
 using System.Collections;
 
@@ -14,6 +15,9 @@ namespace Scare.Dialog
         [SerializeField]
         private AudioSource audioSource;
 
+        [SerializeField]
+        private TextMeshProUGUI captionsText;
+
         private Dialog dialogRoot;
 
         /// <summary>
@@ -24,8 +28,7 @@ namespace Scare.Dialog
         {
             dialogRoot = dialog;
 
-            //TODO TMPro for Captions
-
+            UpdateCaption();
             StartCoroutine(PlayAudioClip(dialogRoot.DialogAudio));
         }
 
@@ -36,10 +39,29 @@ namespace Scare.Dialog
         {
             dialogRoot = dialogRoot.Next;
 
-            //TODO TMPro for Captions
-
             if (dialogRoot)
+            {
+                UpdateCaption();
                 StartCoroutine(PlayAudioClip(dialogRoot.DialogAudio));
+            }
+            else
+            {
+                ClearDialog();
+            }
+        }
+
+        /// <summary>
+        /// Updates captionat bottom of the screen.
+        /// </summary>
+        private void UpdateCaption()
+        {
+            captionsText.color = dialogRoot.DialogColor;
+            captionsText.text = dialogRoot.DialogText;
+        }
+
+        private void ClearDialog()
+        {
+            captionsText.text = "";
         }
 
         /// <summary>
@@ -49,9 +71,10 @@ namespace Scare.Dialog
         private IEnumerator PlayAudioClip(AudioClip clip)
         {
 
-            audioSource.PlayOneShot(clip);
+            audioSource.clip = clip;
+            audioSource.PlayDelayed(dialogRoot.Delay);
 
-            yield return new WaitForSeconds(clip.length);
+            yield return new WaitForSeconds(clip.length + dialogRoot.Delay);
 
             OnClipFinished();
 
