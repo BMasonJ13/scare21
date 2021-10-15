@@ -7,6 +7,12 @@ using UnityEngine;
 
 namespace Scare.Dialog
 {
+    /// <summary>
+    /// The foundation of dialog in game.
+    /// Dialog can be thinked of as a LinkedList 
+    /// structure with the next node pointing the 
+    /// next logical line of dialog.
+    /// </summary>
     [CreateAssetMenu(fileName = "New Dialog", menuName = "Dialog Data", order = 1)]
     public class Dialog : ScriptableObject
     {

@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+/*Benton Justice
+ *10/15/2021
+ * Box Trigger For Dialogs
+ */
 using UnityEngine;
 
-public class BoxTrigger : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+namespace Scare.Dialog.Triggers {
+    /// <summary>
+    /// The Box Trigger is for dialogs to be 
+    /// started when the player steps in bounds of the box.
+    /// </summary>
+    public class BoxTrigger : MonoBehaviour
     {
-        
-    }
+        [Header("Dialog Components")]
+        [SerializeField]
+        private DialogController dialogController;
+        [SerializeField]
+        private Dialog dialogRoot;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void OnTriggerEnter(Collider collider)
+        {
+            if(collider.CompareTag("Player"))
+                dialogController.StartDialog(dialogRoot);
+        }
+
     }
 }

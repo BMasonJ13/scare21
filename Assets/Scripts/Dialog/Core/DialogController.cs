@@ -8,6 +8,11 @@ using System.Collections;
 
 namespace Scare.Dialog
 {
+    /// <summary>
+    /// The Dialog controller controls the flow of the dialog scene. It handles 
+    /// updating text and text color as well as determining when to end and clear the 
+    /// dialog. If I have time I would like to create a captions stand-alone class.
+    /// </summary>
     public class DialogController : MonoBehaviour
     {
 

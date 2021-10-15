@@ -8,6 +8,11 @@ using System.Linq;
 
 namespace Scare.AI.Components
 {
+    /// <summary>
+    /// The FOV Component actively searches for 'items of interest' and returns the closest one 
+    /// through its FoundItemOfInterest event.
+    /// </summary>
+    /// TODO to add to this class: Begin searching on start bool, Return all in field of view, and a check for if previous collider is still in fov.
     public class FOVComponent : MonoBehaviour
     {
 
@@ -85,6 +90,11 @@ namespace Scare.AI.Components
         private void SortColliders(Collider[] items)
         {
             items = items.OrderBy(collider => (transform.position - collider.transform.position).sqrMagnitude).ToArray();
+        }
+
+        private void OnDisable()
+        {
+            foundItemCallBack = null;
         }
 
 #if UNITY_EDITOR

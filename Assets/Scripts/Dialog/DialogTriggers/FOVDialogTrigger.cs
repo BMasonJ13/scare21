@@ -3,6 +3,10 @@ using Scare.AI.Components;
 
 namespace Scare.Dialog.Triggers {
 
+    /// <summary>
+    /// The FOV Dialog Trigger will trigger dialog when an Item Of Interest is 
+    /// returned through a FOV Components event.
+    /// </summary>
     public class FOVDialogTrigger : MonoBehaviour
     {
 
