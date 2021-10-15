@@ -13,7 +13,7 @@ namespace Scare.Dialog
 
         //Components
         [SerializeField]
-        private AudioSource audioSource;
+        private AudioSource[] audioSources;
 
         [SerializeField]
         private TextMeshProUGUI captionsText;
@@ -71,8 +71,13 @@ namespace Scare.Dialog
         private IEnumerator PlayAudioClip(AudioClip clip)
         {
 
-            audioSource.clip = clip;
-            audioSource.PlayDelayed(dialogRoot.Delay);
+            if(dialogRoot.SpeakerIndex >= audioSources.Length || dialogRoot.SpeakerIndex < 0)
+            {
+                Debug.LogError(name + ": dialogRoot.SpeakerIndex out of bounds. Check the Dialog Scriptable Objects.");
+            }
+
+            audioSources[dialogRoot.SpeakerIndex].clip = clip;
+            audioSources[dialogRoot.SpeakerIndex].PlayDelayed(dialogRoot.Delay);
 
             yield return new WaitForSeconds(clip.length + dialogRoot.Delay);
 

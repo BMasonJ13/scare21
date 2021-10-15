@@ -15,4 +15,6 @@ MonoBehaviour:
   _dialogText: Hey, how are you?
   _dialogColor: {r: 0.03137255, g: 0.96862745, b: 0.99607843, a: 1}
   _dialogAudio: {fileID: 8300000, guid: 698ae5b372989a74aa4612de81b9a2d7, type: 3}
+  _delay: 0
+  _speakerIndex: 0
   _next: {fileID: 11400000, guid: 9bc45d87bcbb7984e913a15a3b80b9c4, type: 2}

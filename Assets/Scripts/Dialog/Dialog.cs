@@ -44,6 +44,14 @@ namespace Scare.Dialog
         public float Delay { get { return _delay; } }
 
         [SerializeField]
+        private int _speakerIndex;
+
+        /// <summary>
+        /// This refers to what AudioSource should play the AudioClip.
+        /// </summary>
+        public int SpeakerIndex { get { return _speakerIndex; } }
+
+        [SerializeField]
         private Dialog _next;
         /// <summary>
         /// The next logical Dialog Node in the Dialog chain. Null if dialog chain has ended.
