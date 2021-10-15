@@ -1,0 +1,62 @@
+﻿/* Benton Justice
+ * 10/14/2021
+ * Dialog Controller
+ */
+using UnityEngine;
+using System.Collections;
+
+namespace Scare.Dialog
+{
+    public class DialogController : MonoBehaviour
+    {
+
+        //Components
+        [SerializeField]
+        private AudioSource audioSource;
+
+        private Dialog dialogRoot;
+
+        /// <summary>
+        /// This method should be called to begin a dialog chain.
+        /// </summary>
+        /// <param name="dialog">The root that contains all of the dialog for a scenario.</param>
+        public void StartDialog(Dialog dialog)
+        {
+            dialogRoot = dialog;
+
+            //TODO TMPro for Captions
+
+            StartCoroutine(PlayAudioClip(dialogRoot.DialogAudio));
+        }
+
+        /// <summary>
+        /// On AudioClip finish go to the next dialog object.
+        /// </summary>
+        private void OnClipFinished()
+        {
+            dialogRoot = dialogRoot.Next;
+
+            //TODO TMPro for Captions
+
+            if (dialogRoot)
+                StartCoroutine(PlayAudioClip(dialogRoot.DialogAudio));
+        }
+
+        /// <summary>
+        /// A simple callback to traverse the dialog chain.
+        /// </summary>
+        /// <param name="clip">The AudioClip to be played.</param>
+        private IEnumerator PlayAudioClip(AudioClip clip)
+        {
+
+            audioSource.PlayOneShot(clip);
+
+            yield return new WaitForSeconds(clip.length);
+
+            OnClipFinished();
+
+        }
+
+
+    }
+}
