@@ -53,9 +53,11 @@
     <UnityVersion>2020.3.20f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Dialog\DialogController.cs" />
-    <Compile Include="Assets\Scripts\Dialog\Dialog.cs" />
-    <Compile Include="Assets\Scripts\Dialog\DialogTriggerTest.cs" />
+    <Compile Include="Assets\Scripts\Dialog\Core\DialogController.cs" />
+    <Compile Include="Assets\Scripts\Dialog\Core\Dialog.cs" />
+    <Compile Include="Assets\Scripts\AI\Components\FOVComponent.cs" />
+    <Compile Include="Assets\Scripts\Dialog\DialogTriggers\BoxTrigger.cs" />
+    <Compile Include="Assets\Scripts\Dialog\DialogTriggers\FOVDialogTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

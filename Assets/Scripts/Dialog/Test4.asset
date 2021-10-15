@@ -16,5 +16,5 @@ MonoBehaviour:
   _dialogColor: {r: 0.99607843, g: 0.3254902, b: 0.73333335, a: 1}
   _dialogAudio: {fileID: 8300000, guid: 74e6b6ef80021324f88b3dd5b759b624, type: 3}
   _delay: 0.3
-  _speakerIndex: 1
+  _speakerIndex: 0
   _next: {fileID: 0}
