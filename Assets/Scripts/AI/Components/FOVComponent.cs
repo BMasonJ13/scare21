@@ -65,18 +65,14 @@ namespace Scare.AI.Components
 
             foreach (Collider item in itemsFound)
             {
-                
                 Transform target = item.transform;
                 Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-               // Debug.Log(item.name);
                 if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
                 {
-                 //   Debug.Log(item.name);
                     float distanceToTarget = Vector3.Distance(transform.position, item.transform.position);
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                     {
-                   //     Debug.Log(item.name);
                         foundItemCallBack?.Invoke(item);
                     }
                 }
